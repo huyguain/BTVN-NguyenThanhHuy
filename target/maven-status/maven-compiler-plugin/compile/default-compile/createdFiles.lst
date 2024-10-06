@@ -1,3 +1,7 @@
 models/Coder.class
 Controllers/OOP.class
+Controllers/Cau_truc_du_lieu.class
+Controllers/MyFile.class
+Controllers/Stirng_J2.class
+Controllers/RE_J2.class
 models/Person.class

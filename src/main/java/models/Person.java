@@ -15,10 +15,10 @@ public class Person {
     //protected: chỉ được sử dụng trong package hoặc class con của nó
     //default: chỉ được sử dụng trong package
     //OOP có 4 thuộc tính: 
-    //kế thừa
-    //đóng gói
-    //đa hình
     //trừu tượng
+    //đóng gói
+    //kế thừa
+    //đa hình
     //non-access modifiers: 
 
     private String name;
