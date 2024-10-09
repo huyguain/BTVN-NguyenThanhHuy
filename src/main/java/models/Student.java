@@ -5,7 +5,6 @@
 package models;
 
 /**
- *
  * @author huynguyen21
  */
 public class Student {
@@ -55,5 +54,5 @@ public class Student {
     public String toString() {
         return "Student{" + "id=" + id + ", name=" + name + ", age=" + age + ", major=" + major + '}';
     }
-    
+
 }

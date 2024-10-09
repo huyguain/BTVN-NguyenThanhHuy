@@ -7,7 +7,6 @@ package models;
 import java.util.ArrayList;
 
 /**
- *
  * @author huynguyen21
  */
 public class StudentManager {
@@ -16,12 +15,12 @@ public class StudentManager {
 
     public StudentManager() {
     }
-    
+
     public void addStudent(Student student) {
         listStudent.add(student);
         System.out.println("Student added successfully");
     }
-    
+
     public void showListStudent() {
         if (listStudent.isEmpty()) {
             System.out.println("Student list are empty!");
@@ -31,7 +30,7 @@ public class StudentManager {
             }
         }
     }
-    
+
     public void editStudent(int id, String name, int age, String major) {
         Student student = findStudent(id);
         if (student != null) {
@@ -43,7 +42,7 @@ public class StudentManager {
             System.out.println("Student not found!");
         }
     }
-    
+
     public Student findStudent(int id) {
         for (Student student : listStudent) {
             if (student.getId() == id) {
@@ -52,15 +51,18 @@ public class StudentManager {
         }
         return null;
     }
-    
+
     public void deleteStudent(int id) {
         listStudent.removeIf(student -> student.getId() == id);
     }
-    
+
     public ArrayList<Student> findByName(String name) {
         ArrayList<Student> students = new ArrayList<>();
         for (Student student : listStudent) {
-            if (student.getName().equalsIgnoreCase(name)) {
+            if (
+                    student.getName().toLowerCase()
+                            .contains(name.toLowerCase().trim())
+            ) {
                 students.add(student);
             }
         }
