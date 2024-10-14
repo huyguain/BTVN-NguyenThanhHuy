@@ -1,62 +1,72 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
-        Tao menu thuc hien tac vu 2 so nguyen
-        1. Tính tổng
-        2. Tính hiệu
-        3. Tính tích
-        4. Tính thương
-        - Tạo thêm thẻ input để người dùng chọn tác vụ muốn thực hiện
-        - Truoc khi nhap so nguyen, nhap ho ten
-        - O Servlet (xu li du lieu) -> In ra man hinh: chao "Ho ten", tac vu ban chon la,
-        Tong la: 
-        <!--    Bai toan tinh tong 2 so nguyen do nguoi dung nhap vao    -->
-        <form action="J2Servlet" method="get">
-            Enter first name: <input type="text" name="firstName"><br>
-            Enter last name:  <input type="text" name="lastName"><br>
-            Enter first number: <input type="text" name="sothunhat"><br>
-            Enter second number:  <input type="text" name="sothuhai"><br>
-            Select calculation:
-            <select name="calculation">
-                <option value="sum">Sum(+)</option>
-                <option value="sub">Sub(-)</option>
-                <option value="multi">Multi(x)</option>
-                <option value="div">Div(/)</option>
-            </select>
-            <input type="submit" value="result">
-        </form>
-        <!--
-            RoadMap Backend Java
-            - HTML: giao dien nguoi dung
-            - Servlet: thanh phan phia server dung de xu li cac yeu cau lien quan den client, tao ra phan hoi va gui lai phan
-            hoi cho client.
-            - JSP: Su dung de thay the cho HTML -> cho phep viet ca code Java va code HTML tren cung 1 file
-            - JSTL: Cho phep tuong tac giua Servlet (thong tin database) voi JSP de dang hon.
-            - JDBC: cho phep ket noi voi Database
-            - May chu ung dung: Tomcat
-            - Client
-            Server (Tomcat)
-            Client -> gui request cho server
-            Server -> gui lai response cho client
+<head>
+    <title>Start Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<!--    BTVN-b7    -->
+<!--        Tao menu thuc hien tac vu 2 so nguyen-->
+<!--        1. Tính tổng-->
+<!--        2. Tính hiệu-->
+<!--        3. Tính tích-->
+<!--        4. Tính thương-->
+<!--        - Tạo thêm thẻ input để người dùng chọn tác vụ muốn thực hiện-->
+<!--        - Truoc khi nhap so nguyen, nhap ho ten-->
+<!--        - O Servlet (xu li du lieu) -> In ra man hinh: chao "Ho ten", tac vu ban chon la,-->
+<!--        Tong la: -->
+<!--        &lt;!&ndash;    Bai toan tinh tong 2 so nguyen do nguoi dung nhap vao    &ndash;&gt;-->
+<!--        <form action="J2Servlet" method="get">-->
+<!--            Enter first name: <input type="text" name="firstName"><br>-->
+<!--            Enter last name:  <input type="text" name="lastName"><br>-->
+<!--            Enter first number: <input type="text" name="sothunhat"><br>-->
+<!--            Enter second number:  <input type="text" name="sothuhai"><br>-->
+<!--            Select calculation:-->
+<!--            <select name="calculation">-->
+<!--                <option value="sum">Sum(+)</option>-->
+<!--                <option value="sub">Sub(-)</option>-->
+<!--                <option value="multi">Multi(x)</option>-->
+<!--                <option value="div">Div(/)</option>-->
+<!--            </select>-->
+<!--            <input type="submit" value="result">-->
+<!--        </form>-->
 
-            Chu trinh hoat dong cua Servlet:
-            - Client gui request HTTP len Server
-            - Server nhan request do va day no sang cho Servlet
-            - Servlet se xu li request: xu cac tham so trong request, logic, tuong tac voi CSDL
-            - Servlet se gui response cho Client
+<!--BTVN b8-->
+    <h2>Enter birthday:</h2>
+    <form action="DateTomeServlet" method="post">
+        <input type="date" name="birthday" id="birthday">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
 
-            - Internet: La he thong toan cau duoc ket noi voi nhau, su dung bo giao thuc de chia se va lien lac thong
-            tin.
-            - IP: nhan dien rieng cua nhung ket noi
-            - Domain: la network cua cac may tinh va thiet bi duoc quan ly boi 1 cong ty cu the
-            - DNS: se dich ten mien thanh dia chi IP, sau do may chu DNS se ket noi nguoi dung voi trang Web.
-            - Hosting: cung cap cho o va bao tri
-            - GUI(giao dien nguoi dung): hien thi doi tuong truyen tai thong tin den voi nguoi dung cung nhu bieu thi cac hanh
-            dong ma nguoi dung co the thuc hien.
-        -->
-    </body>
+<!--
+    RoadMap Backend Java
+    - HTML: giao dien nguoi dung
+    - Servlet: thanh phan phia server dung de xu li cac yeu cau lien quan den client, tao ra phan hoi va gui lai phan
+    hoi cho client.
+    - JSP: Su dung de thay the cho HTML -> cho phep viet ca code Java va code HTML tren cung 1 file
+    - JSTL: Cho phep tuong tac giua Servlet (thong tin database) voi JSP de dang hon.
+    - JDBC: cho phep ket noi voi Database
+    - May chu ung dung: Tomcat
+    - Client
+    Server (Tomcat)
+    Client -> gui request cho server
+    Server -> gui lai response cho client
+
+    Chu trinh hoat dong cua Servlet:
+    - Client gui request HTTP len Server
+    - Server nhan request do va day no sang cho Servlet
+    - Servlet se xu li request: xu cac tham so trong request, logic, tuong tac voi CSDL
+    - Servlet se gui response cho Client
+
+    - Internet: La he thong toan cau duoc ket noi voi nhau, su dung bo giao thuc de chia se va lien lac thong
+    tin.
+    - IP: nhan dien rieng cua nhung ket noi
+    - Domain: la network cua cac may tinh va thiet bi duoc quan ly boi 1 cong ty cu the
+    - DNS: se dich ten mien thanh dia chi IP, sau do may chu DNS se ket noi nguoi dung voi trang Web.
+    - Hosting: cung cap cho o va bao tri
+    - GUI(giao dien nguoi dung): hien thi doi tuong truyen tai thong tin den voi nguoi dung cung nhu bieu thi cac hanh
+    dong ma nguoi dung co the thuc hien.
+-->
+</body>
 </html>

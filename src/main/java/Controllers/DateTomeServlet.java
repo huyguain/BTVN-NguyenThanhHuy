@@ -6,17 +6,25 @@ package Controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Date;
+import java.util.Objects;
 
+import DAO.J2DAO;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import DAO.J2DAO;
+import services.DateTimeHelper;
 
 /**
  * @author huynguyen21
  */
-public class J2Servlet extends HttpServlet {
+@WebServlet(name = "DateTomeServlet", urlPatterns = {"/DateTomeServlet"})
+public class DateTomeServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,10 +43,10 @@ public class J2Servlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet J2Servlet</title>");
+            out.println("<title>Servlet DateTomeServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet J2Servlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet DateTomeServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -57,30 +65,27 @@ public class J2Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //Nhận thêm tác vụ
-
-        //processRequest(request, response);
-        //ne se dua tat ca du lieu dau vao hien thi tren thanh url
-        //vi du, thuc hien chuc nang login
-        //username va password
-        //Tim kiem do dung gi do co the viet code trong method GET
-        PrintWriter out = response.getWriter();
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-        int first = Integer.parseInt(request.getParameter("sothunhat"));
-        int second = Integer.parseInt(request.getParameter("sothuhai"));
-        String calculation = request.getParameter("calculation");
-        int result = switch (calculation) {
-            case "sum" -> J2DAO.calculateSum(first, second);
-            case "sub" -> J2DAO.calculateSub(first, second);
-            case "mul" -> J2DAO.calculateMulti(first, second);
-            case "div" -> J2DAO.calculateDiv(first, second);
-            default -> 0;
-        };
-
-        out.println("Hello " + firstName + " " + lastName + ", result: " + result + ", Calculation: " + calculation);
+        processRequest(request, response);
     }
 
+    int getAge(LocalDate today, LocalDate birthday) {
+        return Period.between(birthday, today).getYears();
+    }
+
+    long getUntilBirthDay(LocalDate today, LocalDate birthday) {
+        LocalDate birthDayThisYear = birthday.withYear(today.getYear());
+        long result;
+        if (birthDayThisYear.isBefore(today)) {
+            result = birthday.withYear(today.getYear() + 1).toEpochDay() - today.toEpochDay();
+        } else {
+            result = birthDayThisYear.toEpochDay() - today.toEpochDay();
+        }
+        return result;
+    }
+
+    int getTotalNumberOfBirthDay(LocalDate birthday) {
+        return birthday.getDayOfMonth() + birthday.getMonthValue() + birthday.getYear();
+    }
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -93,8 +98,18 @@ public class J2Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //        processRequest(request, response);
-        //bao mat thong tin hon so voi GET
-        //
+        PrintWriter out = response.getWriter();
+        String birthDayParam = request.getParameter("birthday");
+
+        if (Objects.equals(birthDayParam, "")) {
+            out.println("Not be empty!");
+        }
+        LocalDate today = LocalDate.now();
+        LocalDate birthday = LocalDate.parse(birthDayParam);
+
+        out.println("Age: " + getAge(today, birthday));
+        out.println("Number of days left until birthday: " + getUntilBirthDay(today, birthday));
+        out.println("Total number of birthdays: " + getTotalNumberOfBirthDay(birthday));
     }
 
     /**
