@@ -253,4 +253,10 @@ public class DateTimeHelper {
         long diff = current.getTime() - e.getTime();
         return ((float) diff / (1000 * 60 * 60 * 24));
     }
+
+    // Kiểm tra nếu thời gian cần kiểm tra (target) nằm giữa thời gian start và end
+    public static boolean isBetweenTime(LocalDateTime target, LocalDateTime start, LocalDateTime end) {
+        return (target.isAfter(start) || target.isEqual(start)) &&
+                (target.isBefore(end) || target.isEqual(end));
+    }
 }

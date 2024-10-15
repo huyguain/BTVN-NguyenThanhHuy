@@ -31,14 +31,29 @@
 <!--            <input type="submit" value="result">-->
 <!--        </form>-->
 
-<!--BTVN b8-->
-    <h2>Enter birthday:</h2>
-    <form action="DateTomeServlet" method="post">
-        <input type="date" name="birthday" id="birthday">
+    <!--BTVN b8-->
+<!--    <h2>Enter birthday:</h2>-->
+<!--    <form action="DateTomeServlet" method="post">-->
+<!--        <input type="date" name="birthday" id="birthday">-->
+<!--        <br>-->
+<!--        <input type="submit" value="Submit">-->
+<!--    </form>-->
+
+    <!-- BTVN b8-2 -->
+    <h2>Enter times:</h2>
+    <form action="AppointmentServlet" method="post">
+        Start Date: <input type="datetime-local" name="start_date" id="start_date">
+        <br>
+        End Date: <input type="datetime-local" name="end_date" id="end_date">
+        <br>
+        <select name="type">
+            <option value="add">Thêm cuộc hẹn</option>
+            <option value="list">Xem toàn bộ</option>
+            <option value="sublist">Ds khoảng tren</option>
+        </select>
         <br>
         <input type="submit" value="Submit">
     </form>
-
 <!--
     RoadMap Backend Java
     - HTML: giao dien nguoi dung
