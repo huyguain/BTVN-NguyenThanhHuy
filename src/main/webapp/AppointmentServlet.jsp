@@ -1,4 +1,5 @@
-<%--
+<%@ page import="models.Appointment" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: huynguyen21
   Date: 16/10/24
