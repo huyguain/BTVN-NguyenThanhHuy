@@ -6,12 +6,15 @@ package Controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import DAO.J2DAO;
+import jakarta.servlet.http.HttpSession;
+import models.Person;
 
 /**
  * @author huynguyen21
@@ -58,6 +61,11 @@ public class J2Servlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //Nhận thêm tác vụ
+
+        HttpSession session = request.getSession();
+        //Lay du lieu tu session ve
+        ArrayList<Person> personList = new ArrayList<>();
+        personList = (ArrayList<Person>) session.getAttribute("list");
 
         //processRequest(request, response);
         //ne se dua tat ca du lieu dau vao hien thi tren thanh url

@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import models.Person;
 
 import java.io.IOException;
@@ -74,6 +75,10 @@ public class J2_Servlet extends HttpServlet {
         listPerson.add(ps1);
         listPerson.add(ps2);
         listPerson.add(ps3);
+
+        HttpSession ss = request.getSession();
+        //Dong goi data -> may tinh se tu dong gui no len session
+        ss.setAttribute("list", listPerson);
 
         String msg = "";
         if (username.equals(ps1.getName()) && password.equals(ps1.getPhone())) {
