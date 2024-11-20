@@ -3,11 +3,12 @@ package DAO;
 import models.Brand;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BrandDAO {
-    private static final ArrayList<Brand> brands = new ArrayList<>();
+    private static final List<Brand> brands = new ArrayList<>();
 
-    public static ArrayList<Brand> getAllBrands() {
+    public static List<Brand> getAllBrands() {
         return brands;
     }
 

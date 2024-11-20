@@ -13,6 +13,7 @@ import java.io.IOException;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userName = request.getParameter("username");
         String password = request.getParameter("password");
@@ -25,7 +26,9 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("homepage.jsp");
         } else {
             request.setAttribute("error", "Invalid username or password.");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
         }
     }
 }
+
+
